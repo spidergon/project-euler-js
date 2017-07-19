@@ -1,2 +1,2 @@
-Project Euler solutions
-=======================
+Project Euler JS
+================
