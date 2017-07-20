@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 var tools = {
 	primeFactors: function(n) {
 		var factors = [], p = 2;
