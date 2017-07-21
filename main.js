@@ -26,6 +26,6 @@ function showResult(result, problemNum, time) {
 	document.getElementById('result').innerHTML = '<p>Result (in '+time+') : '+result+'</p><a href="https://projecteuler.net/problem='+problemNum+'" target="_blank">See on projecteuler.net</a>';
 }
 
-function showError(errorMsg) {
+function showError(errorMsg) { 
 	document.getElementById('result').innerHTML = '<p>'+errorMsg+'</p>';
 }
