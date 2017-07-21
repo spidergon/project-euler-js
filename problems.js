@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 function p1() {
 	var i = 3, sum = 0;
     while(i < 1000) {
