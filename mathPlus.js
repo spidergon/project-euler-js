@@ -1,6 +1,6 @@
-'use strict';
-var tools = {
-	primeFactors: function(n) {
+const mathjs = require('mathjs');
+const special = {
+	primeFactors: (n) => {
 		var factors = [], p = 2;
 		while(n > 1) {
 			if(n % p == 0) {
@@ -11,7 +11,7 @@ var tools = {
 		}
 		return factors;
 	},
-	isPrime: function(n) {
+	/*isPrime: (n) => {
 		if(n <= 1 || (n > 2 && n % 2 == 0)) { return false; }
 		var i = 3;
 		while (i * i <= n) {
@@ -19,8 +19,8 @@ var tools = {
 			i += 2;
 		}
 		return true;
-	},
-	getPrimes: function(limit) {
+	},*/
+	getPrimes: (limit) => {
 		var arr = [2, 3];
      	var counter = 4;
 	    while(arr.length < limit) {
@@ -38,7 +38,7 @@ var tools = {
 	    }
 		return arr;
 	},
-	getPrimesSum: function(limit) {
+	getPrimesSum: (limit) => {
 		var sum = 5; // 2 + 3
      	var counter = 4; // next prime
 	    while(counter < limit) {
@@ -54,13 +54,13 @@ var tools = {
 	    }
 		return sum;
 	},
-	isPalindrome: function(s) {
+	isPalindrome: (s) => {
 		var len = s.length;
 		if(len <= 1) { return true; }
 		if(s[0] != s[len - 1]) { return false; }
-		return tools.isPalindrome(s.substring(1, len - 1));
+		return special.isPalindrome(s.substring(1, len - 1));
 	},
-	pythagoreanTriplet: function(limit) {
+	pythagoreanTriplet: (limit) => {
 		// Returns the pythagorean triplet (a, b, c) where a + b + c = limit
 		var a = 1, b = 2, c = 0;
 		while(true) {
@@ -77,3 +77,4 @@ var tools = {
 		return [a, b, c];
 	}
 };
+exports.lib = Object.assign({}, special, mathjs);
