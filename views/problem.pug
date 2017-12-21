@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  p Problem ##{id}
+  
+  button.start-stop-btn Start
+  
+  if result
+    .result
+      p Result (in #{time}) : #{result}
+      a(href=`https://projecteuler.net/problem=${id}` target='_blank') See on projecteuler.net
