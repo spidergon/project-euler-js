@@ -1,39 +1,60 @@
-exports.run = (math) => {
+exports.run = () => {
   var result = ''
-  //var sum_list = [0 for i in range(50)]
-  var rest = 0
-  //const fs = require('fs');
-  //const myFile = fs.readFileSync('./public/files/p13');
-  //console.log(myFile);
+  var sumList = [];
+  var rest = 0;
+  
+  for (let i = 0; i < 50; i++) {
+    sumList.push(0);
+  }
 
-  var LineByLineReader = require('line-by-line');
-  var lr = new LineByLineReader('./public/files/p13');
+  // var LineByLineReader = require('line-by-line');
+  // var lr = new LineByLineReader('./public/files/p13');
 
-  lr.on('error', function (err) {
-    // 'err' contains error object
+  // lr.on('error', (err) => {
+  //     // 'err' contains error object
+  // });
+
+  // lr.on('line', (line) => {
+  //     // 'line' contains the current line without the trailing newline character.
+  //     for (let i = 49; i >= 0; i--) {
+  //         const calc = sumList[i] + parseInt(line[i]) + rest;
+  //         if (i > 0) {
+  //             sumList[i] = calc % 10;
+  //             rest = parseInt(calc / 10);
+  //         } else {
+  //             sumList[i] = calc;
+  //         }
+  //     }
+  // });
+
+  // lr.on('end', () => {
+  //     // All lines are read, file is closed now.
+  //     for (let i = 0; i < 10; i++) {
+  //         result += sumList[i].toString();
+  //     }
+  //     time = present() - time;
+  //     if (time >= 1000) {
+  //         time = math.round(time / 1000, 3) + ' s';
+  //     } else {
+  //         time = math.round(time, 3) + ' ms';
+  //     }
+  //     console.log(`Result (in ${time}) : ${result.substring(0, 10)}`);
+  // });
+
+  require('fs').readFileSync('./public/files/p13', 'UTF-8').toString().split('\n').forEach((line) => {
+    line = line.substring(0, 50);
+    for (let i = 49; i >= 0; i--) {
+      const calc = sumList[i] + parseInt(line[i]) + rest;
+      if (i > 0) {
+        sumList[i] = calc % 10;
+        rest = parseInt(calc / 10);
+      } else {
+        sumList[i] = calc;
+      }
+    }
   });
-
-  lr.on('line', function (line) {
-    // 'line' contains the current line without the trailing newline character.
-    console.log(line);
-  });
-
-  lr.on('end', function () {
-    // All lines are read, file is closed now.
-  });
-  /*with open('problems/files/p13.txt') as f:
-      for line in f:
-          if line[-1] == '\n':
-              line = line[:-1]
-          for i in reversed(range(50)):
-              calc = sum_list[i] + int(line[i]) + rest
-              if i > 0:
-                  sum_list[i] = calc % 10
-                  rest = int(calc / 10)
-              else:
-                  sum_list[i] = calc
-
-  for i in range(10):
-      result += str(sum_list[i])
-  return result[:10]*/
+  for (let i = 0; i < 10; i++) {
+    result += sumList[i].toString();
+  }
+  return result.substring(0, 10);
 };

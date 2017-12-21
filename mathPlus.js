@@ -78,6 +78,17 @@ const special = {
       count += 1;
     }
     return nb * 2;
+  },
+  collatzSequenceCount: (n) => {
+    var count = 1;
+    while (n > 1) {
+      if (n % 2 == 0)
+        n /= 2;
+      else
+        n = 3 * n + 1;
+      count++;
+    }
+    return count;
   }
 };
 exports.lib = Object.assign({}, special, mathjs);
