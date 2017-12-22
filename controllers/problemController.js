@@ -6,7 +6,7 @@ exports.problemPage = (req, res) => {
   }
 
   const present = require('present');
-  const math = require('../mathPlus').lib;
+  const math = require('../mathPlus');
   const p = require(`../problems/p${id}`);
   var time = present();
   const result = p.run(math);

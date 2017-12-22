@@ -96,4 +96,4 @@ const special = {
     return n * special.factorial(n - 1);
   }
 };
-exports.lib = Object.assign({}, special, mathjs);
+module.exports = Object.assign({}, special, mathjs);
