@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/spidergon/Project-Euler-JS#readme",
   "dependencies": {
+    "big-integer": "^1.6.26",
     "body-parser": "1.17.1",
     "express": "^4.16.2",
     "line-by-line": "^0.1.5",

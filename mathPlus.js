@@ -1,5 +1,6 @@
 const mathjs = require('mathjs');
 const special = {
+  bigInt: require('big-integer'),
   primeFactors: (n) => {
     var factors = [], p = 2;
     while (n > 1) {
@@ -89,6 +90,10 @@ const special = {
       count++;
     }
     return count;
+  },
+  factorial: (n) => {
+    if (n == 0) return 1;
+    return n * special.factorial(n - 1);
   }
 };
 exports.lib = Object.assign({}, special, mathjs);
