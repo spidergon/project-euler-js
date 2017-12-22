@@ -7,9 +7,9 @@ exports.problemPage = (req, res) => {
 
   const present = require('present');
   const math = require('../mathPlus').lib;
-
+  const p = require(`../problems/p${id}`);
   var time = present();
-  const result = require(`../problems/p${id}`).run(math);
+  const result = p.run(math);
   time = present() - time;
   if (time >= 1000) {
     time = math.round(time / 1000, 3) + ' s';
@@ -21,6 +21,7 @@ exports.problemPage = (req, res) => {
     id: id,
     title: `Problem #${id}`,
     time: time,
-    result: result
+    result: result,
+    total: 16
   });
 }

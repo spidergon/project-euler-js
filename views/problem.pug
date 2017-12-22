@@ -6,6 +6,13 @@ block content
   //- button.start-stop-btn Start
   
   if result
-    .result
-      p Result (in #{time}) : #{result}
-      a(href=`https://projecteuler.net/problem=${id}` target='_blank') See on projecteuler.net
+    p Result (in #{time}) : #{result}
+    a(href=`https://projecteuler.net/problem=${id}` target='_blank') See on projecteuler.net
+    br
+    br
+    if id > 1
+      a(href=`/problems/${parseInt(id) - 1}`) Previous
+      if id < total
+        span &nbsp;|&nbsp;
+    if id < total
+      a(href=`/problems/${parseInt(id) + 1}`) Next
