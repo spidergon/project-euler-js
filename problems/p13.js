@@ -1,11 +1,11 @@
 exports.run = () => {
-  var result = ''
-  var sumList = [];
+  var result = "";
+  var sumList = Array(51).join(0);
   var rest = 0;
-  
-  for (let i = 0; i < 50; i++) {
-    sumList.push(0);
-  }
+
+  // for (let i = 0; i < 50; i++) {
+  //   sumList.push(0);
+  // }
 
   // var LineByLineReader = require('line-by-line');
   // var lr = new LineByLineReader('./public/files/p13');
@@ -41,18 +41,22 @@ exports.run = () => {
   //     console.log(`Result (in ${time}) : ${result.substring(0, 10)}`);
   // });
 
-  require('fs').readFileSync('./public/files/p13', 'UTF-8').toString().split('\n').forEach((line) => {
-    line = line.substring(0, 50);
-    for (let i = 49; i >= 0; i--) {
-      const calc = sumList[i] + parseInt(line[i]) + rest;
-      if (i > 0) {
-        sumList[i] = calc % 10;
-        rest = parseInt(calc / 10);
-      } else {
-        sumList[i] = calc;
+  require("fs")
+    .readFileSync("./public/files/p13", "UTF-8")
+    .toString()
+    .split("\n")
+    .forEach(line => {
+      line = line.substring(0, 50);
+      for (let i = 49; i >= 0; i--) {
+        const calc = sumList[i] + parseInt(line[i]) + rest;
+        if (i > 0) {
+          sumList[i] = calc % 10;
+          rest = parseInt(calc / 10);
+        } else {
+          sumList[i] = calc;
+        }
       }
-    }
-  });
+    });
   for (let i = 0; i < 10; i++) {
     result += sumList[i].toString();
   }
