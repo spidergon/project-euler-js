@@ -1,5 +1,5 @@
 const mathjs = require("mathjs");
-const plus = {
+const mathPlus = {
   bigInt: require("big-integer"),
   primeFactors: n => {
     var factors = [];
@@ -61,7 +61,7 @@ const plus = {
     if (s[0] != s[len - 1]) {
       return false;
     }
-    return plus.isPalindrome(s.substring(1, len - 1));
+    return mathPlus.isPalindrome(s.substring(1, len - 1));
   },
   pythagoreanTriplet: limit => {
     // Returns the pythagorean triplet (a, b, c) where a + b + c = limit
@@ -106,6 +106,25 @@ const plus = {
       count++;
     }
     return count;
+  },
+  bigFactorial: n => {
+    if (n == 0) return mathPlus.bigInt(1);
+    return mathPlus.bigInt(n).times(mathPlus.bigFactorial(n - 1));
   }
 };
-module.exports = Object.assign({}, plus, mathjs);
+const tools = {
+  getTriangle: file => {
+    const triangle = [];
+    require("fs")
+      .readFileSync(`./public/files/${file}`)
+      .toString()
+      .split("\n")
+      .forEach(line => {
+        if (line != "") {
+          triangle.push(line.split(" ").map(item => parseInt(item)));
+        }
+      });
+    return triangle;
+  }
+};
+module.exports = Object.assign({}, mathjs, mathPlus, tools);

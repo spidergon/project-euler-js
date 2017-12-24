@@ -38,18 +38,20 @@ module.exports = () => {
   // });
 
   require("fs")
-    .readFileSync("./public/files/p13", "UTF-8")
+    .readFileSync("./public/files/p13")
     .toString()
     .split("\n")
     .forEach(line => {
-      line = line.substring(0, 50);
-      for (let i = 49; i >= 0; i--) {
-        const calc = sumList[i] + parseInt(line[i]) + rest;
-        if (i > 0) {
-          sumList[i] = calc % 10;
-          rest = parseInt(calc / 10);
-        } else {
-          sumList[i] = calc;
+      if (line != "") {
+        line = line.substring(0, 50);
+        for (let i = 49; i >= 0; i--) {
+          const calc = sumList[i] + parseInt(line[i]) + rest;
+          if (i > 0) {
+            sumList[i] = calc % 10;
+            rest = parseInt(calc / 10);
+          } else {
+            sumList[i] = calc;
+          }
         }
       }
     });
