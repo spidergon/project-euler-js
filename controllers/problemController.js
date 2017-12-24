@@ -23,6 +23,6 @@ exports.problemPage = (req, res) => {
     title: `Problem #${id}`,
     time: time,
     result: result,
-    total: 16
+    total: 20
   });
 };
