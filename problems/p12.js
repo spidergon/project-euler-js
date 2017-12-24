@@ -1,4 +1,4 @@
-exports.run = (math) => {
+module.exports = math => {
   var triangle_number = 1;
   var nbDivisors = 0;
   var count = 2;

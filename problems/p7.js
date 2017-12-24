@@ -1,4 +1,1 @@
-exports.run = (math) => {
-  const primes = math.getPrimes(10001);
-	return primes[10000];
-};
+module.exports = math => math.getPrimes(10001)[10000];

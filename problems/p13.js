@@ -1,11 +1,7 @@
-exports.run = () => {
+module.exports = () => {
   var result = "";
-  var sumList = Array(51).join(0);
+  var sumList = Array(50).fill(0);
   var rest = 0;
-
-  // for (let i = 0; i < 50; i++) {
-  //   sumList.push(0);
-  // }
 
   // var LineByLineReader = require('line-by-line');
   // var lr = new LineByLineReader('./public/files/p13');

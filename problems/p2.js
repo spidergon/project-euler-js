@@ -1,4 +1,4 @@
-exports.run = () => {
+module.exports = () => {
   var a = 5,
     b = 8,
     sum = 2;
