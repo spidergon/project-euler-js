@@ -98,6 +98,21 @@ const mathPlus = {
     }
     return nb * 2;
   },
+  divisors: (n, isProper = false) => {
+    const divisors = [];
+    for (let d = 1, c = mathjs.sqrt(mathjs.abs(n)); d <= c; d++) {
+      if (n % d == 0) {
+        divisors.push(d);
+        if (d > 1) {
+          divisors.push(n / d);
+        }
+      }
+    }
+    if (!isProper) {
+      divisors.push(n);
+    }
+    return divisors;
+  },
   collatzSequenceCount: n => {
     var count = 1;
     while (n > 1) {
@@ -110,7 +125,8 @@ const mathPlus = {
   bigFactorial: n => {
     if (n == 0) return mathPlus.bigInt(1);
     return mathPlus.bigInt(n).times(mathPlus.bigFactorial(n - 1));
-  }
+  },
+  isAbundant: n => n < mathPlus.divisors(n, true).reduce((a, v) => a + v, 0)
 };
 const tools = {
   getTriangle: file => {
