@@ -1,4 +1,4 @@
-exports.problemPage = (req, res) => {
+exports.problemPage = async (req, res) => {
   const id = req.params.id;
   if (!Number.isInteger(parseInt(id))) {
     throw Error("You must enter a number");
@@ -9,7 +9,7 @@ exports.problemPage = (req, res) => {
   const p = require(`../problems/p${id}`);
 
   var time = present();
-  const result = p(math); // Running problem
+  const result = await p(math); // Running problem
   time = present() - time;
 
   if (time >= 1000) {
