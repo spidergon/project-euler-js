@@ -2,16 +2,11 @@
   "name": "project-euler-js",
   "version": "0.0.0",
   "description": "Challenge in solving Project Euler problems in JavaScript.",
-  "engines": {
-    "node": ">= 7.6.0"
-  },
   "scripts": {
     "prod": "node ./start.js",
     "watch": "nodemon ./start.js --ignore public/",
     "start": "concurrently \"npm run watch\" \"npm run assets\" --names \"💻,📦\" --prefix name",
-    "assets": "webpack -w --display-max-modules 0",
-    "sample": "node ./data/load-sample-data.js",
-    "blowitallaway": "node ./data/load-sample-data.js --delete"
+    "assets": "webpack -w --display-max-modules 0"
   },
   "repository": {
     "type": "git",
@@ -30,27 +25,27 @@
   },
   "homepage": "https://github.com/spidergon/Project-Euler-JS#readme",
   "dependencies": {
-    "big-integer": "^1.6.26",
-    "body-parser": "1.17.1",
-    "express": "^4.16.2",
-    "line-by-line": "^0.1.5",
-    "mathjs": "^3.18.0",
+    "big-integer": "^1.6.43",
+    "body-parser": "1.19.0",
+    "express": "^4.16.4",
+    "line-by-line": "^0.1.6",
+    "mathjs": "^5.10.0",
     "present": "^1.0.0",
-    "pug": "^2.0.0-rc.4"
+    "pug": "^2.0.3"
   },
   "devDependencies": {
-    "autoprefixer": "6.7.7",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^6.4.1",
-    "babel-preset-env": "^1.6.0",
-    "concurrently": "^3.5.1",
-    "css-loader": "^0.27.3",
-    "extract-text-webpack-plugin": "^2.1.2",
-    "node-sass": "^4.7.2",
-    "nodemon": "^1.14.1",
-    "now": "^6.4.1",
-    "postcss-loader": "^1.3.3",
-    "sass-loader": "^6.0.6",
-    "webpack": "^2.7.0"
+    "autoprefixer": "9.5.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
+    "babel-preset-env": "^1.7.0",
+    "concurrently": "^4.1.0",
+    "css-loader": "^2.1.1",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.19.0",
+    "now": "^15.2.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "webpack": "^4.31.0"
   }
 }
