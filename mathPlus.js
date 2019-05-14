@@ -1,146 +1,149 @@
-const mathjs = require("mathjs");
+const mathjs = require('mathjs')
+
 const mathPlus = {
-  bigInt: require("big-integer"),
-  primeFactors: n => {
-    var factors = [];
-    var p = 2;
+  bigInt: require('big-integer'),
+  primeFactors (n) {
+    const factors = []
+    let p = 2
     while (n > 1) {
-      if (n % p == 0) {
-        factors.push(p);
-        n /= p;
+      if (n % p === 0) {
+        factors.push(p)
+        n /= p
       }
-      p += 1;
+      p += 1
     }
-    return factors;
+    return factors
   },
-  getPrimes: limit => {
-    const arr = [2, 3];
-    var counter = 4;
+  getPrimes (limit) {
+    const arr = [2, 3]
+    let counter = 4
     while (arr.length < limit) {
-      if (counter % 2 != 0 && counter % 3 != 0) {
-        var temp = 4;
+      if (counter % 2 !== 0 && counter % 3 !== 0) {
+        let temp = 4
         while (temp * temp <= counter) {
-          if (counter % temp == 0) {
-            break;
+          if (counter % temp === 0) {
+            break
           }
-          temp++;
+          temp++
         }
         if (temp * temp > counter) {
-          arr.push(counter);
+          arr.push(counter)
         }
       }
-      counter++;
+      counter++
     }
-    return arr;
+    return arr
   },
-  getPrimesSum: limit => {
-    var sum = 5; // 2 + 3
-    var counter = 4; // next prime
+  getPrimesSum (limit) {
+    let sum = 5 // 2 + 3
+    let counter = 4 // next prime
     while (counter < limit) {
-      if (counter % 2 != 0 && counter % 3 != 0) {
-        var temp = 4;
+      if (counter % 2 !== 0 && counter % 3 !== 0) {
+        let temp = 4
         while (temp * temp <= counter) {
-          if (counter % temp == 0) {
-            break;
+          if (counter % temp === 0) {
+            break
           }
-          temp++;
+          temp++
         }
         if (temp * temp > counter) {
-          sum += counter;
+          sum += counter
         }
       }
-      counter++;
+      counter++
     }
-    return sum;
+    return sum
   },
-  isPalindrome: s => {
-    const len = s.length;
+  isPalindrome (s) {
+    const len = s.length
     if (len <= 1) {
-      return true;
+      return true
     }
-    if (s[0] != s[len - 1]) {
-      return false;
+    if (s[0] !== s[len - 1]) {
+      return false
     }
-    return mathPlus.isPalindrome(s.substring(1, len - 1));
+    return mathPlus.isPalindrome(s.substring(1, len - 1))
   },
-  pythagoreanTriplet: limit => {
+  pythagoreanTriplet (limit) {
     // Returns the pythagorean triplet (a, b, c) where a + b + c = limit
-    var a = 1,
-      b = 2,
-      c = 0;
+    let a = 1
+    let b = 2
+    let c = 0
     while (true) {
-      c = limit - a - b;
+      c = limit - a - b
       if (c < 3) {
-        return [];
+        return []
       }
-      if (a * a + b * b == c * c) {
-        break;
+      if (a * a + b * b === c * c) {
+        break
       }
       if (a + 1 < b) {
-        a += 1;
+        a += 1
       } else {
-        a = 1;
-        b += 1;
+        a = 1
+        b += 1
       }
     }
-    return [a, b, c];
+    return [a, b, c]
   },
-  nbDivisors: n => {
-    var nb = 0;
-    var limit = n;
-    var count = 1;
+  nbDivisors (n) {
+    let nb = 0
+    let limit = n
+    let count = 1
     while (count < limit) {
-      if (n % count == 0) {
-        limit = n / count;
-        nb += 1;
+      if (n % count === 0) {
+        limit = n / count
+        nb += 1
       }
-      count += 1;
+      count += 1
     }
-    return nb * 2;
+    return nb * 2
   },
-  divisors: (n, isProper = false) => {
-    const divisors = [];
+  divisors (n, isProper = false) {
+    const divisors = []
     for (let d = 1, c = mathjs.sqrt(mathjs.abs(n)); d <= c; d++) {
-      if (n % d == 0) {
-        divisors.push(d);
+      if (n % d === 0) {
+        divisors.push(d)
         if (d > 1) {
-          divisors.push(n / d);
+          divisors.push(n / d)
         }
       }
     }
     if (!isProper) {
-      divisors.push(n);
+      divisors.push(n)
     }
-    return divisors;
+    return divisors
   },
-  collatzSequenceCount: n => {
-    var count = 1;
+  collatzSequenceCount (n) {
+    let count = 1
     while (n > 1) {
-      if (n % 2 == 0) n /= 2;
-      else n = 3 * n + 1;
-      count++;
+      if (n % 2 === 0) n /= 2
+      else n = 3 * n + 1
+      count++
     }
-    return count;
+    return count
   },
-  bigFactorial: n => {
-    if (n == 0) return mathPlus.bigInt(1);
-    return mathPlus.bigInt(n).times(mathPlus.bigFactorial(n - 1));
+  bigFactorial (n) {
+    if (n === 0) return mathPlus.bigInt(1)
+    return mathPlus.bigInt(n).times(mathPlus.bigFactorial(n - 1))
   },
   isAbundant: n => n < mathPlus.divisors(n, true).reduce((a, v) => a + v, 0)
-};
+}
+
 const tools = {
-  getTriangle: file => {
-    const triangle = [];
-    require("fs")
+  getNumbersArray (file) {
+    const numbers = []
+    require('fs')
       .readFileSync(`./public/files/${file}`)
       .toString()
-      .split("\n")
+      .split('\n')
       .forEach(line => {
-        if (line != "") {
-          triangle.push(line.split(" ").map(item => parseInt(item)));
+        if (line !== '') {
+          numbers.push(line.split(' ').map(item => parseInt(item)))
         }
-      });
-    return triangle;
+      })
+    return numbers
   }
-};
-module.exports = Object.assign({}, mathjs, mathPlus, tools);
+}
+
+module.exports = Object.assign({}, mathjs, mathPlus, tools)

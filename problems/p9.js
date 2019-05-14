@@ -1,4 +1,4 @@
-module.exports = math => {
-  const triplet = math.pythagoreanTriplet(1000);
-  return triplet[0] * triplet[1] * triplet[2];
-};
+module.exports = ({ pythagoreanTriplet }) => {
+  const triplet = pythagoreanTriplet(1000)
+  return triplet[0] * triplet[1] * triplet[2]
+}

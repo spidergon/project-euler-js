@@ -1,13 +1,13 @@
-module.exports = math => {
-  var triangle_number = 1;
-  var nbDivisors = 0;
-  var count = 2;
-  var result = 0;
-  while (nbDivisors < 501) {
-    nbDivisors = math.nbDivisors(triangle_number);
-    result = triangle_number;
-    triangle_number += count;
-    count += 1;
+module.exports = ({ nbDivisors }) => {
+  let triangleNumber = 1
+  let div = 0
+  let count = 2
+  let result = 0
+  while (div < 501) {
+    div = nbDivisors(triangleNumber)
+    result = triangleNumber
+    triangleNumber += count
+    count += 1
   }
-  return result;
-};
+  return result
+}

@@ -1,1 +1,1 @@
-module.exports = () => parseInt(1200 / 7);
+module.exports = () => parseInt(1200 / 7)

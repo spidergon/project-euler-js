@@ -1,4 +1,4 @@
-module.exports = math => {
+module.exports = ({ isAbundant }) => {
   // var result = 0;
   // var i = 1;
   // while (true) {
@@ -14,27 +14,27 @@ module.exports = math => {
   //   i++;
   // }
   // return result;
-  const limit = 28123;
-  var sum = 0;
-  var v = 1;
-  var found = false;
+  const limit = 28123
+  let sum = 0
+  let v = 1
+  let found = false
   while (v < limit) {
     for (let i = 12; i < limit && i < v - 12; i++) {
       for (let j = 12; j < limit && j <= v - i; j++) {
-        if (v == i + j && math.isAbundant(i) && math.isAbundant(j)) {
-          found = true;
-          console.log('NOK', v, i, j, sum);
-          break;
+        if (v === i + j && isAbundant(i) && isAbundant(j)) {
+          found = true
+          console.log('NOK', v, i, j, sum)
+          break
         }
       }
-      if (found) break;
+      if (found) break
     }
     if (!found) {
-      sum += v;
-      console.log('OK', v, sum);
+      sum += v
+      console.log('OK', v, sum)
     }
-    found = false;
-    v++;
+    found = false
+    v++
   }
-  return sum;
-};
+  return sum
+}

@@ -1,1 +1,1 @@
-module.exports = math => math.max(math.primeFactors(600851475143));
+module.exports = ({ max, primeFactors }) => max(primeFactors(600851475143))

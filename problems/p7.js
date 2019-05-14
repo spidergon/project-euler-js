@@ -1,1 +1,1 @@
-module.exports = math => math.getPrimes(10001)[10000];
+module.exports = ({ getPrimes }) => getPrimes(10001)[10000]

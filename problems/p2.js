@@ -1,14 +1,12 @@
 module.exports = () => {
-  var a = 5,
-    b = 8,
-    sum = 2;
+  let a = 5
+  let b = 8
+  let sum = 2
   while (b < 4000000) {
-    if (b % 2 == 0) {
-      sum += b;
-    }
-    let aa = a;
-    a = b;
-    b += aa;
+    if (b % 2 === 0) sum += b
+    const aa = a
+    a = b
+    b += aa
   }
-  return sum;
-};
+  return sum
+}
